@@ -15,12 +15,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Hello World
-          </p>
-          
-        </div>
+        <p className="text-3xl font-bold underline">
+          Hello World
+        </p>          
       </main>
     </>
   )
