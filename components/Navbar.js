@@ -2,20 +2,24 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import Logo from './Logo';
+import { MenuItem } from '@mui/material';
+import Link from 'next/link';
 
-const pages = ['Home', 'Conventions', 'Campouts', 'Contribute']
+const pages = [
+  {page: "Home", path: "/"},
+  {page: "Conventions", path: "/conventions"},
+  {page: "Campouts", path: "/campouts"},
+  {page: "Contribute", path: "/contribute"}
+]
 
 export default function Navbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Logo />
+          <Logo className="mr-2"/>
           <IconButton
             size="large"
             edge="start"
@@ -23,12 +27,15 @@ export default function Navbar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
+          {pages.map((p) => (
+            <MenuItem key={p.page} className='mx-2 text-sm'>
+              <Link href={p.path}>
+                {p.page}
+              </Link>
+            </MenuItem>
+          ))}
         </Toolbar>
       </AppBar>
     </Box>
