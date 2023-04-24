@@ -30,7 +30,7 @@ export default function Navbar() {
 
           </IconButton>
           {pages.map((p) => (
-            <MenuItem className='mx-2 text-sm'>
+            <MenuItem key={p.page} className='mx-2 text-sm'>
               <Link href={p.path}>
                 {p.page}
               </Link>
