@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    backendUrl: "https://localhost:5001/"
+    backendUrl: 'http://localhost:8000/'
   }
 }
 

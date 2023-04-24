@@ -2,10 +2,19 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
-  
+export async function getServerSideProps() {
+  const res = await fetch(`http://localhost:8000`)
+  console.log('Res: ', JSON.stringify(res))
+  //const data = await res.json()
+  const data = JSON.stringify(res)
+  //const data = await res.json()
+
+  return { props: { data } }
+}
+
+export default function Home({ data }) {
   return (
     <>
       <Head>
@@ -16,7 +25,8 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <p>Hello World</p>
-        {process.env.backendUrl}          
+        {process.env.backendUrl}
+        <h3>{data}</h3>
       </main>
     </>
   )
